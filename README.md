@@ -29,8 +29,7 @@ The pipeline processes demographic and biometric datasets from the CDC National 
 
 ### Key Implementation Phases:
 1. **Robust Data Cleansing:** Outliers (e.g., impossible BMI values of `0`) and non-target demographics (pediatric cohorts) are strictly isolated and omitted.
-2. **Defensive Standardization:** Categorical encoded integers are decoded into meaningful business strings (`1` $
-ightarrow$ `'Männlich'`) via optimized conditional structures (`CASE WHEN`).
+2. **Defensive Standardization:** Categorical encoded integers are decoded into meaningful business strings (`1` maps to `'Männlich'`) via optimized conditional structures (`CASE WHEN`).
 3. **Advanced Analytics via Window Functions:** Utilizing statistical partitioning (`AVG(...) OVER (PARTITION BY ...)`) to construct peer-group rolling averages directly inside the data tier for zero-latency retrieval.
 4. **Calculated Risk Scoring:** Implemented an enterprise-grade Common Table Expression (CTE) hierarchy that isolates high-risk patients based on multiple biometric flags (Socio-demographic metrics combined with elevated Total Cholesterol $\ge 240$ mg/dL).
 
